@@ -1,0 +1,119 @@
+.contact-section {
+  background: #d7dfed;
+  padding:6.87rem;
+  width: 100%;
+}
+
+.contact-container {
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+  margin-left: 40px;
+}
+
+.contact-section .title {
+  font-size: 36px;
+  color: #1e3551;
+  margin-bottom: 40px;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.contact-left,
+.contact-right {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+
+}
+
+.contact-left h3 {
+  font-size: 24px;
+  color: #1e3551;
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  margin: 10px 0;
+  color: #333;
+  
+}
+
+.contact-socials a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #1e3551;
+  font-weight: 500;
+  font-size: 25px;
+  padding:5px;
+}
+
+.contact-socials a:hover {
+  text-decoration: underline;
+  color: #f5761a;
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-right input,
+.contact-right textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.contact-right button {
+  padding: 12px;
+  background: #1e3551;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-right button:hover {
+  background: #0a2540;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .contact-left,
+  .contact-right {
+    text-align: center;
+  }
+
+  .contact-left p,
+  .contact-info {
+    text-align: center;
+  }
+}
+
+.child {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .about-left img {
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+  }
+}
+
