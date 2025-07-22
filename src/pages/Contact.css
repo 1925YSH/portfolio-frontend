@@ -92,15 +92,20 @@
   .contact-content {
     flex-direction: column;
   }
+  .title{
+    text-align: left;
+  }
 
   .contact-left,
   .contact-right {
-    text-align: center;
+    text-align: left;
+
   }
 
   .contact-left p,
   .contact-info {
-    text-align: center;
+    text-align:left;
+    
   }
 }
 
@@ -109,11 +114,6 @@
   max-width: 100%;
 }
 
-@media (max-width: 768px) {
-  .about-left img {
-    width: 100%;
-    max-width: 300px;
-    margin: auto;
-  }
-}
+
+
 
