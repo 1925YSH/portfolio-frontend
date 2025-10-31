@@ -30,7 +30,7 @@ const About = () => {
   I thrive in collaborative environments, love solving real-world challenges through code, and constantly seek to learn and adapt with evolving technologies. Whether it's building from scratch or enhancing existing systems, I enjoy turning ideas into impactful digital solutions.
 </p>
 
-            <a href="/yashresume(1)(1).pdf" download className="btn">CV <i className="fas fa-download"></i></a>
+            <a href="/09Oct.pdf" download className="btn">CV <i className="fas fa-download"></i></a>
             <div className="social-links">
               <a href="https://github.com/1925YSH" target="_blank"><i className="fab fa-github"></i></a>
               <a href="https://linkedin.com/in/yash-otwal-55137a258" target="_blank"><i className="fab fa-linkedin"></i></a>
