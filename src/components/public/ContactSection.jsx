@@ -17,6 +17,20 @@ export default function ContactSection() {
     setIsSubmitting(true);
     
     try {
+      // 1. Send email directly from the browser (bypasses Cloudflare bot protection)
+      const web3FormsRes = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "eb782e85-8b0f-4244-96f1-1d0acc742cb1",
+          subject: `New Contact Message from ${formData.name}`,
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      // 2. Save to our own MongoDB database via the backend
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -24,7 +38,8 @@ export default function ContactSection() {
       });
 
       const data = await res.json();
-      if (res.ok) {
+      
+      if (res.ok && web3FormsRes.ok) {
         toast.success("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
       } else {
