@@ -8,7 +8,7 @@ export default function ProjectsSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/projects`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -57,7 +57,7 @@ export default function ProjectsSection() {
                 <div className="relative h-56 w-full overflow-hidden bg-white dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 flex items-center justify-center p-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
-                    src={`http://localhost:5000/${project.image.replace(/\\/g, '/')}`} 
+                    src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/${project.image.replace(/\\/g, '/')}`} 
                     alt={project.title}
                     className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-lg"
                   />

@@ -13,7 +13,7 @@ export default function AdminMessages() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/contact");
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact`);
       const data = await res.json();
       if (Array.isArray(data)) {
         setMessages(data);
@@ -31,7 +31,7 @@ export default function AdminMessages() {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this message?")) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/contact/${id}`, { method: "DELETE" });
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact/${id}`, { method: "DELETE" });
       if (res.ok) {
         toast.success("Message deleted");
         setMessages(messages.filter(msg => msg._id !== id));

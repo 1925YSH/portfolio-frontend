@@ -11,8 +11,8 @@ export default function DashboardPage() {
     const fetchStats = async () => {
       try {
         const [projRes, msgRes] = await Promise.all([
-          fetch("http://localhost:5000/api/projects"),
-          fetch("http://localhost:5000/api/contact")
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/projects`),
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact`)
         ]);
         const projData = await projRes.json();
         const msgData = await msgRes.json();
