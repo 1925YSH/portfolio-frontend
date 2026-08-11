@@ -27,19 +27,34 @@ export default function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
 
+  const scrollToSection = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace(/.*\#/, "");
+    const elem = document.getElementById(targetId);
+    if (elem) {
+      elem.scrollIntoView({ behavior: "smooth" });
+      setIsOpen(false);
+    }
+  };
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-white dark:bg-slate-950 shadow-md border-b border-slate-200 dark:border-slate-800 py-3" : "bg-transparent py-5"}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="#home" className="text-2xl font-bold text-blue-600 dark:text-blue-500 tracking-wider">
+          <a href="#home" onClick={(e) => scrollToSection(e, "#home")} className="text-2xl font-bold text-blue-600 dark:text-blue-500 tracking-wider cursor-pointer">
             Yash<span className="text-slate-900 dark:text-white transition-colors duration-300">Otwal</span>
-          </Link>
+          </a>
           
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className="text-slate-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500 transition-colors text-sm font-medium uppercase tracking-wide">
+              <a 
+                key={link.name} 
+                href={link.href} 
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="text-slate-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-500 transition-colors text-sm font-medium uppercase tracking-wide cursor-pointer"
+              >
                 {link.name}
-              </Link>
+              </a>
             ))}
             
             {/* Theme Toggle Desktop */}
@@ -76,14 +91,14 @@ export default function Navbar() {
         <div className="md:hidden glass-panel absolute top-full left-0 w-full border-t border-slate-200 dark:border-slate-800 shadow-xl">
           <div className="px-4 pt-2 pb-6 space-y-2 flex flex-col">
             {navLinks.map((link) => (
-              <Link 
+              <a 
                 key={link.name} 
                 href={link.href} 
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-3 text-base font-medium text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-md transition-colors"
+                onClick={(e) => scrollToSection(e, link.href)}
+                className="block px-3 py-3 text-base font-medium text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/50 rounded-md transition-colors cursor-pointer"
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
