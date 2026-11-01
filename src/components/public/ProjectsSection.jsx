@@ -60,6 +60,10 @@ export default function ProjectsSection() {
                   <img 
                     src={project.image ? apiUrl(project.image.replace(/\\/g, '/')) : '/placeholder.png'} 
                     alt={project.title}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = '/placeholder.png';
+                    }}
                     className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-lg"
                   />
                 </div>
