@@ -82,12 +82,38 @@ export default function ProjectsSection() {
                     ))}
                   </div>
                   
-                  <div className="flex items-center space-x-4 pt-4 border-t border-slate-200 dark:border-gray-800">
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noreferrer" className="flex items-center text-sm font-medium text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:text-white transition-colors">
-                        <FaGithub className="mr-2" /> Code
-                      </a>
-                    )}
+                  <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-200 dark:border-gray-800">
+                    {project.github && (() => {
+                      const links = (typeof project.github === 'string' ? project.github.split(/[\s,]+/) : project.github).filter(Boolean);
+                      if (links.length === 1) {
+                        return (
+                          <a 
+                            href={links[0]} 
+                            target="_blank" 
+                            rel="noreferrer" 
+                            className="flex items-center text-sm font-medium text-slate-700 dark:text-gray-300 hover:text-slate-900 dark:text-white transition-colors"
+                          >
+                            <FaGithub className="mr-2" /> Code
+                          </a>
+                        );
+                      }
+                      return links.map((link, idx) => {
+                        const isFrontend = /frontend/i.test(link);
+                        const isBackend = /backend/i.test(link);
+                        const label = isFrontend ? 'Frontend' : isBackend ? 'Backend' : `Code ${idx + 1}`;
+                        return (
+                          <a 
+                            key={idx} 
+                            href={link} 
+                            target="_blank" 
+                            rel="noreferrer" 
+                            className="inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 transition-colors border border-slate-200 dark:border-slate-700/60"
+                          >
+                            <FaGithub className="mr-1.5" /> {label}
+                          </a>
+                        );
+                      });
+                    })()}
                     {project.demo && (
                       <a href={project.demo} target="_blank" rel="noreferrer" className="flex items-center text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors ml-auto">
                         <FaExternalLinkAlt className="mr-2" /> Live Demo
