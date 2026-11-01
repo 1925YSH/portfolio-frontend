@@ -1,4 +1,5 @@
 "use client";
+import { apiUrl } from "@/lib/api";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaProjectDiagram, FaEnvelope } from "react-icons/fa";
@@ -11,8 +12,8 @@ export default function DashboardPage() {
     const fetchStats = async () => {
       try {
         const [projRes, msgRes] = await Promise.all([
-          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/projects`),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact`)
+          fetch(apiUrl("api/projects")),
+          fetch(apiUrl("api/contact"))
         ]);
         const projData = await projRes.json();
         const msgData = await msgRes.json();

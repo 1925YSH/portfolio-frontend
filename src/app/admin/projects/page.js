@@ -1,4 +1,5 @@
 "use client";
+import { apiUrl } from "@/lib/api";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { FaTrash, FaEdit } from "react-icons/fa";
@@ -17,7 +18,7 @@ export default function AdminProjects() {
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/projects`);
+      const res = await fetch(apiUrl("api/projects"));
       const data = await res.json();
       if (Array.isArray(data)) {
         setProjects(data);
@@ -51,7 +52,7 @@ export default function AdminProjects() {
     if (formData.image) data.append("image", formData.image);
 
     try {
-      const url = editingId ? `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/projects/${editingId}` : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/projects`;
+      const url = editingId ? apiUrl(`api/projects/${editingId}`) : apiUrl("api/projects");
       const method = editingId ? "PUT" : "POST";
       
       const res = await fetch(url, {
@@ -78,7 +79,7 @@ export default function AdminProjects() {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this project?")) return;
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/projects/${id}`, { method: "DELETE" });
+      const res = await fetch(apiUrl(`api/projects/${id}`), { method: "DELETE" });
       if (res.ok) {
         toast.success("Project deleted");
         fetchProjects();
@@ -138,7 +139,7 @@ export default function AdminProjects() {
             <div key={project._id} className="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden flex flex-col">
               <div className="w-full h-40 bg-slate-900/80 flex items-center justify-center p-2 border-b border-slate-700">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/${project.image.replace(/\\/g, '/')}`} alt={project.title} className="max-w-full max-h-full object-contain drop-shadow-sm" />
+                <img src={apiUrl(project.image.replace(/\\/g, '/'))} alt={project.title} className="max-w-full max-h-full object-contain drop-shadow-sm" />
               </div>
               <div className="p-4 flex-1 flex flex-col">
                 <h3 className="text-lg font-bold text-white truncate">{project.title}</h3>

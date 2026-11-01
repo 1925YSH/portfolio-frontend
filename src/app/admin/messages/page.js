@@ -1,4 +1,5 @@
 "use client";
+import { apiUrl } from "@/lib/api";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
@@ -13,7 +14,7 @@ export default function AdminMessages() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact`);
+      const res = await fetch(apiUrl("api/contact"));
       const data = await res.json();
       if (Array.isArray(data)) {
         setMessages(data);
@@ -31,7 +32,7 @@ export default function AdminMessages() {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this message?")) return;
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact/${id}`, { method: "DELETE" });
+      const res = await fetch(apiUrl(`api/contact/${id}`), { method: "DELETE" });
       if (res.ok) {
         toast.success("Message deleted");
         setMessages(messages.filter(msg => msg._id !== id));

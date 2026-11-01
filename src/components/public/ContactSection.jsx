@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { apiUrl } from "@/lib/api";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
@@ -31,7 +32,7 @@ export default function ContactSection() {
       });
 
       // 2. Save to our own MongoDB database via the backend
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact`, {
+      const res = await fetch(apiUrl("api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
