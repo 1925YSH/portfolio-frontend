@@ -58,7 +58,7 @@ export default function ProjectsSection() {
                 <div className="relative h-56 w-full overflow-hidden bg-white dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 flex items-center justify-center p-4">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
-                    src={apiUrl(project.image.replace(/\\/g, '/'))} 
+                    src={project.image ? apiUrl(project.image.replace(/\\/g, '/')) : '/placeholder.png'} 
                     alt={project.title}
                     className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-lg"
                   />

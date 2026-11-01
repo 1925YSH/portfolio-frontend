@@ -139,7 +139,7 @@ export default function AdminProjects() {
             <div key={project._id} className="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden flex flex-col">
               <div className="w-full h-40 bg-slate-900/80 flex items-center justify-center p-2 border-b border-slate-700">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={apiUrl(project.image.replace(/\\/g, '/'))} alt={project.title} className="max-w-full max-h-full object-contain drop-shadow-sm" />
+                <img src={project.image ? apiUrl(project.image.replace(/\\/g, '/')) : '/placeholder.png'} alt={project.title} className="max-w-full max-h-full object-contain drop-shadow-sm" />
               </div>
               <div className="p-4 flex-1 flex flex-col">
                 <h3 className="text-lg font-bold text-white truncate">{project.title}</h3>
