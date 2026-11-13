@@ -1,96 +1,134 @@
 "use client";
 import { motion } from "framer-motion";
+import { FaGraduationCap } from "react-icons/fa";
+
+const STATS = [
+  { value: "1+", label: "Years Experience" },
+  { value: "10+", label: "Projects Completed" },
+  { value: "100%", label: "Client Dedication" },
+  { value: "5+", label: "Tech Stacks Mastered" },
+];
+
+const EDUCATION = [
+  {
+    degree: "B.Tech in Computer Science",
+    school: "Institute of Engineering & Science, IPS Academy Indore",
+    year: "2021 – 2025",
+    score: "CGPA: 8.4",
+  },
+  {
+    degree: "Class 12th (Senior Secondary)",
+    school: "RHHS School, Zirapur",
+    year: "2020 – 2021",
+    score: "Percentage: 87%",
+  },
+  {
+    degree: "Class 10th (Secondary School)",
+    school: "MTCH School, Khilchipur",
+    year: "2018 – 2019",
+    score: "Percentage: 88%",
+  },
+];
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+    <section id="about" className="bg-bg py-20 md:py-28 relative border-t border-stroke/60">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mb-14 md:mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-8 h-px bg-stroke" />
+            <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
+              Background & Journey
+            </span>
+          </div>
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal text-text-primary tracking-tight">
+            About <span className="font-display italic">myself</span>
+          </h2>
+
+          <p className="text-sm md:text-base text-muted font-light mt-3 max-w-xl">
+            Passionate about turning complex engineering problems into intuitive, high-performance digital experiences.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="glass-panel p-8 rounded-2xl relative overflow-hidden"
-          >
-             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl" />
-             <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Who am I?</h3>
-             <p className="text-slate-600 dark:text-gray-400 leading-relaxed mb-6">
-                I am a passionate Full Stack Developer based in Indore, India. I specialize in building dynamic, responsive, and user-centric web applications using the MERN stack and Next.js.
-             </p>
-             <p className="text-slate-600 dark:text-gray-400 leading-relaxed">
-                With a strong foundation in both frontend aesthetics and backend architecture, I aim to create seamless digital experiences. I am constantly learning and adapting to new technologies to stay ahead in the ever-evolving tech landscape.
-             </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-2 gap-6"
-          >
-             {[
-               { number: "1+", label: "Years Experience" },
-               { number: "10+", label: "Projects Completed" },
-               { number: "5+", label: "Technologies Mastered" },
-               { number: "100%", label: "Dedication" }
-             ].map((stat, i) => (
-               <div key={i} className="glass-panel p-6 rounded-2xl text-center border border-slate-200 dark:border-gray-800 hover:border-blue-500/30 transition-colors">
-                  <h4 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2">{stat.number}</h4>
-                  <p className="text-sm text-slate-600 dark:text-gray-400">{stat.label}</p>
-               </div>
-             ))}
-          </motion.div>
-        </div>
-
-        {/* Education Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="mt-24 text-center mb-12"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Education Journey</h3>
-          <div className="w-16 h-1 bg-purple-500 mx-auto rounded-full"></div>
-        </motion.div>
-
-        <div className="space-y-6 max-w-4xl mx-auto">
-          {[
-            { degree: "B.Tech in Computer Science", school: "Institute of Engineering & Science, IPS Academy Indore", year: "2021 – 2025", score: "CGPA: 8.4" },
-            { degree: "Class 12th", school: "RHHS School, Zirapur", year: "2020 – 2021", score: "Percentage: 87%" },
-            { degree: "Class 10th", school: "MTCH School, Khilchipur", year: "2018 – 2019", score: "Percentage: 88%" }
-          ].map((edu, i) => (
-            <motion.div 
+        {/* Stats Row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16 md:mb-20">
+          {STATS.map((stat, i) => (
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-panel p-6 md:p-8 rounded-2xl flex flex-col md:flex-row md:items-center justify-between border border-slate-200 dark:border-gray-800 hover:border-purple-500/30 transition-colors group"
+              className="p-6 md:p-8 rounded-3xl bg-surface/30 border border-stroke text-center relative overflow-hidden group hover:bg-surface transition-colors"
             >
-              <div>
-                <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-1 group-hover:text-purple-400 transition-colors">{edu.degree}</h4>
-                <p className="text-slate-600 dark:text-gray-400 mb-3 md:mb-0">{edu.school}</p>
-              </div>
-              <div className="flex flex-col items-start md:items-end">
-                <span className="inline-block px-4 py-1 rounded-full bg-purple-500/10 text-purple-400 text-sm font-medium mb-2">{edu.year}</span>
-                <p className="text-slate-700 dark:text-gray-300 font-medium">{edu.score}</p>
-              </div>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-display text-text-primary mb-2">
+                {stat.value}
+              </h3>
+              <p className="text-xs sm:text-sm text-muted font-light">{stat.label}</p>
             </motion.div>
           ))}
+        </div>
+
+        {/* Bio & Philosophy Card */}
+        <div className="rounded-3xl bg-surface/20 border border-stroke p-8 sm:p-10 md:p-12 mb-16 md:mb-20">
+          <h3 className="text-2xl sm:text-3xl font-display italic text-text-primary mb-5">
+            Engineering with architectural integrity.
+          </h3>
+          <div className="space-y-4 text-sm sm:text-base text-muted font-light leading-relaxed max-w-3xl">
+            <p>
+              I am a dedicated Full Stack Developer based in Indore, India. I specialize in designing and engineering dynamic, responsive, and user-centric web applications utilizing modern technologies across the MERN ecosystem and Next.js.
+            </p>
+            <p>
+              With a solid foundation in both interface nuance and backend system design, I aim to create coherent digital products that deliver measurable real-world value.
+            </p>
+          </div>
+        </div>
+
+        {/* Education Journey */}
+        <div>
+          <div className="flex items-center gap-3 mb-8">
+            <FaGraduationCap className="text-[#89AACC] text-lg" />
+            <h3 className="text-2xl sm:text-3xl font-display italic text-text-primary">
+              Academic foundation
+            </h3>
+          </div>
+
+          <div className="space-y-4">
+            {EDUCATION.map((edu, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group p-6 sm:p-8 rounded-2xl bg-surface/30 hover:bg-surface border border-stroke transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4"
+              >
+                <div>
+                  <h4 className="text-lg sm:text-xl font-medium text-text-primary group-hover:text-[#89AACC] transition-colors mb-1">
+                    {edu.degree}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-muted font-light">{edu.school}</p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono text-muted bg-bg px-3 py-1 rounded-full border border-stroke">
+                    {edu.year}
+                  </span>
+                  <span className="text-xs font-semibold text-[#89AACC] bg-[#4E85BF]/10 px-3 py-1 rounded-full border border-[#4E85BF]/20">
+                    {edu.score}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

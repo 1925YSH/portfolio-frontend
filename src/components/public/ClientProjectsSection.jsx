@@ -2,127 +2,167 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaBuilding } from "react-icons/fa";
 
-export default function ClientProjectsSection() {
-  const clientProjects = [
-    {
-      id: 1,
-      title: "Acropolis Educational Platform",
-      description: "The official web platform for Acropolis Institute of Law, empowering future legal professionals with comprehensive academic resources, student life updates, and admission management.",
-      techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
-      repos: [
-        { label: "Frontend", url: "https://github.com/developers-qualimatrix/acropolis" },
-        { label: "Backend", url: "https://github.com/developers-qualimatrix/acropolis-backend" },
-        { label: "AGI", url: "https://github.com/developers-qualimatrix/acropolis-main-website" }
-      ],
-      demo: "https://www.acropolislaw.in/",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: 2,
-      title: "Gulf Healthcare Platform",
-      description: "A robust healthcare management platform connecting clinics and patients. Provides a unified ecosystem for appointments, centralized reports vault, and autonomous clinical workflows.",
-      techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
-      repos: [
-        { label: "App", url: "https://github.com/developers-qualimatrix/gulfhealthcare-app" },
-        { label: "Frontend", url: "https://github.com/developers-qualimatrix/gulfhealthcare-platform-frontend" },
-        { label: "Backend", url: "https://github.com/developers-qualimatrix/gulfhealthcare-platform-backend" }
-      ],
-      demo: "https://platform.gulfhealth.care/",
-      color: "from-teal-500 to-emerald-500"
-    },
-    {
-      id: 3,
-      title: "Skill Access",
-      description: "An AI-driven talent assessment platform that bridges the gap between students, institutes, and corporates with smart assessments, real-time analytics, and scalable hiring workflows.",
-      techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
-      repos: [
-        { label: "Frontend", url: "https://github.com/developers-qualimatrix/skillaccess-frontend" },
-        { label: "Backend", url: "https://github.com/developers-qualimatrix/skillaccess-backend" }
-      ],
-      demo: "https://www.skillaccess.in/",
-      color: "from-indigo-500 to-purple-500"
-    },
-    {
-      id: 4,
-      title: "TechyMed AI",
-      description: "The world's first agentic care engine. Deploys specialized AI agents that reason, coordinate, and execute clinic operations autonomously to eliminate manual administrative effort.",
-      techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
-      repos: [
-        { label: "Frontend", url: "https://github.com/developers-qualimatrix/techymedai-frontend" },
-        { label: "Backend", url: "https://github.com/developers-qualimatrix/techymedai-backend" }
-      ],
-      demo: "https://www.techymed.ai/",
-      color: "from-rose-500 to-pink-500"
-    }
-  ];
+const CLIENT_PROJECTS = [
+  {
+    id: 1,
+    title: "Acropolis Educational Platform",
+    role: "Full Stack Development Engineer",
+    company: "Qualimatrix Technologies Pvt Ltd",
+    description: "The official web platform for Acropolis Institute of Law, empowering future legal professionals with comprehensive academic resources, student life updates, and admission management.",
+    techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
+    repos: [
+      { label: "Frontend", url: "https://github.com/developers-qualimatrix/acropolis" },
+      { label: "Backend", url: "https://github.com/developers-qualimatrix/acropolis-backend" },
+      { label: "AGI", url: "https://github.com/developers-qualimatrix/acropolis-main-website" },
+    ],
+    demo: "https://www.acropolislaw.in/",
+  },
+  {
+    id: 2,
+    title: "Gulf Healthcare Platform",
+    role: "Full Stack Development Engineer",
+    company: "Qualimatrix Technologies Pvt Ltd",
+    description: "A robust healthcare management platform connecting clinics and patients. Provides a unified ecosystem for appointments, centralized reports vault, and autonomous clinical workflows.",
+    techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
+    repos: [
+      { label: "App", url: "https://github.com/developers-qualimatrix/gulfhealthcare-app" },
+      { label: "Frontend", url: "https://github.com/developers-qualimatrix/gulfhealthcare-platform-frontend" },
+      { label: "Backend", url: "https://github.com/developers-qualimatrix/gulfhealthcare-platform-backend" },
+    ],
+    demo: "https://platform.gulfhealth.care/",
+  },
+  {
+    id: 3,
+    title: "Skill Access",
+    role: "Full Stack Development Engineer",
+    company: "Qualimatrix Technologies Pvt Ltd",
+    description: "An AI-driven talent assessment platform that bridges the gap between students, institutes, and corporates with smart assessments, real-time analytics, and scalable hiring workflows.",
+    techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
+    repos: [
+      { label: "Frontend", url: "https://github.com/developers-qualimatrix/skillaccess-frontend" },
+      { label: "Backend", url: "https://github.com/developers-qualimatrix/skillaccess-backend" },
+    ],
+    demo: "https://www.skillaccess.in/",
+  },
+  {
+    id: 4,
+    title: "TechyMed AI",
+    role: "Full Stack Development Engineer",
+    company: "Qualimatrix Technologies Pvt Ltd",
+    description: "The world's first agentic care engine. Deploys specialized AI agents that reason, coordinate, and execute clinic operations autonomously to eliminate manual administrative effort.",
+    techStack: ["Next.js", "React", "Node.js", "Tailwind CSS"],
+    repos: [
+      { label: "Frontend", url: "https://github.com/developers-qualimatrix/techymedai-frontend" },
+      { label: "Backend", url: "https://github.com/developers-qualimatrix/techymedai-backend" },
+    ],
+    demo: "https://www.techymed.ai/",
+  },
+];
 
+export default function ClientProjectsSection() {
   return (
-    <section id="client-projects" className="py-24 relative bg-slate-50 dark:bg-slate-900/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="client-projects" className="bg-bg py-20 md:py-28 relative border-t border-stroke/60">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mb-14 md:mb-20"
         >
-          <div className="flex items-center justify-center space-x-3 mb-4">
-            <FaBuilding className="text-3xl text-blue-500" />
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Client Projects</h2>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-8 h-px bg-stroke" />
+            <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
+              Client Engagements
+            </span>
           </div>
-          <p className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto mb-4">
-            Professional projects I worked on during my time as a Software Development Engineer at Qualimatrix Technologies Pvt Ltd.
+
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-normal text-text-primary tracking-tight">
+            Industry <span className="font-display italic">experience</span>
+          </h2>
+
+          <p className="text-sm md:text-base text-muted font-light mt-3 max-w-xl">
+            High-impact production platforms engineered during my tenure at Qualimatrix Technologies Pvt Ltd.
           </p>
-          <div className="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {clientProjects.map((project, index) => (
+        {/* Horizontal Project List */}
+        <div className="space-y-5 md:space-y-6">
+          {CLIENT_PROJECTS.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-panel rounded-2xl overflow-hidden flex flex-col border border-slate-200 dark:border-gray-800 hover:border-blue-500/50 transition-colors group bg-white dark:bg-slate-900 shadow-sm hover:shadow-md"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group rounded-[28px] sm:rounded-[36px] bg-surface/30 hover:bg-surface border border-stroke p-6 sm:p-8 md:p-10 transition-all duration-300 relative overflow-hidden"
             >
-              {/* Project Image/Gradient Placeholder */}
-              <div className={`h-2 relative w-full bg-gradient-to-r ${project.color}`}></div>
+              {/* Subtle hover gradient wash */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#89AACC]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">{project.title}</h3>
-                  {project.demo !== "#" && (
-                    <a href={project.demo} target="_blank" rel="noreferrer" className="text-blue-500 hover:text-blue-400 bg-blue-500/10 p-2 rounded-full transition-colors">
-                      <FaExternalLinkAlt />
+              <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                {/* Left Info */}
+                <div className="flex-1 max-w-2xl">
+                  {/* Badge Row */}
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <span className="inline-flex items-center gap-1.5 text-xs text-[#89AACC] font-medium">
+                      <FaBuilding className="text-[11px]" />
+                      {project.company}
+                    </span>
+                    <span className="text-stroke">•</span>
+                    <span className="text-xs text-muted font-light">{project.role}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl sm:text-3xl font-display italic text-text-primary group-hover:text-[#89AACC] transition-colors mb-3">
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-muted leading-relaxed font-light mb-5">
+                    {project.description}
+                  </p>
+
+                  {/* Tech stack badges */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="text-[11px] px-3 py-1 rounded-full bg-bg/80 border border-stroke text-muted"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right Actions */}
+                <div className="flex flex-wrap lg:flex-col items-start lg:items-end gap-3 pt-4 lg:pt-0 border-t lg:border-t-0 border-stroke/50">
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] font-medium text-text-primary bg-text-primary/10 hover:bg-text-primary hover:text-bg rounded-full px-5 py-2.5 transition-all duration-200"
+                    >
+                      <span>Live Site</span>
+                      <FaExternalLinkAlt className="text-[10px]" />
                     </a>
                   )}
-                </div>
 
-                <p className="text-slate-600 dark:text-gray-400 text-base mb-6 flex-grow leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.techStack.map((tech, i) => (
-                    <span key={i} className="px-3 py-1 text-xs font-medium rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-gray-700">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="pt-6 border-t border-slate-200 dark:border-gray-800">
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-3">Repositories:</h4>
-                  <div className="flex flex-wrap gap-3">
+                  {/* Multi-repo Badges */}
+                  <div className="flex flex-wrap gap-2">
                     {project.repos.map((repo, i) => (
                       <a
                         key={i}
                         href={repo.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center text-sm font-medium px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-gray-800 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors"
+                        className="inline-flex items-center gap-1.5 text-xs text-muted hover:text-text-primary bg-bg/60 hover:bg-bg border border-stroke rounded-full px-3 py-1.5 transition-colors"
                       >
-                        <FaGithub className="mr-2" /> {repo.label}
+                        <FaGithub className="text-[11px]" />
+                        <span>{repo.label}</span>
                       </a>
                     ))}
                   </div>
